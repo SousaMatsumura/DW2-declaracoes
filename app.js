@@ -1,8 +1,14 @@
-const http = require(http);
+const http = require('http');
+const express = require('express');
 
-const server = http.createServer((req, res) => {
-    console.log('Hello World!!!');
-    res.end('Hello World');
+const app = express();
+
+app.use((req, res, next) => {
+    console.log("Middleware executado");
+    res.end("<h1>Middleware executado</h1>");
 });
 
-serve.listen(3000);
+
+const server = http.createServer(app);
+
+server.listen(3000);

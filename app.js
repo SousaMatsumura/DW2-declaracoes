@@ -1,14 +1,16 @@
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const path = require('path');
 
 const usuarioRouter = require('./routes/usuario');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(usuarioRouter);
+app.use('/usuario', usuarioRouter);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 

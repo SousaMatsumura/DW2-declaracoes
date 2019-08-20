@@ -1,16 +1,17 @@
 const express = require('express');
+const path = require('path');
 
 const rootDir = require('../util/rootDir');
 
 const router = express.Router();
 
-router.post('/usuario/novo', (req, res, next)=>{
+router.post('/novo', (req, res, next)=>{
     console.log(req.body);
     res.redirect('/');
 });
 
-router.get('/usuario/novo', (req, res, next) => {
-    res.sendFile(rootDir+'/views/novoUsuario.htm');
+router.get('/novo', (req, res, next) => {
+    res.sendFile(path.join(rootDir, 'views', 'novoUsuario.htm'));
 });
 
 module.exports = router;
